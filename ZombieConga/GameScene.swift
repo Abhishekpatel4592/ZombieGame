@@ -12,7 +12,7 @@ import GameplayKit
 class GameScene: SKScene {
    
     // Make zombie global, so other functions can access it
-
+    let zombie = SKSpriteNode(imageNamed: "zombie1")
     
     // Movement variables
 
@@ -42,7 +42,7 @@ class GameScene: SKScene {
         // ZOMBIE ADDING ON THE SCREEN --------------------------------------------------------------------
         
         //Adding zombie image
-        let zombie = SKSpriteNode(imageNamed: "zombie1")
+        //let zombie = SKSpriteNode(imageNamed: "zombie1")
         
         //Setting the position
         zombie.position = CGPoint(x: 400, y: 400)
@@ -59,7 +59,11 @@ class GameScene: SKScene {
         //      - drawPositions
         //      - setFPS
         // In IOS, the update() function == updatePositions() function from Android game template
-
+        
+        //Making Zombie move to the right
+        let zombieX = self.zombie.position.x + 10
+        self.zombie.position = CGPoint(x: zombieX, y: self.zombie.position.y)
+        
         
 
     }
