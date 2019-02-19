@@ -21,6 +21,18 @@ class GameScene: SKScene {
         // Set the background color of the app
         self.backgroundColor = SKColor.black;
         
+        // ADD a background image
+        let bg = SKSpriteNode(imageNamed: "background1")
+        
+        // Set the Position of the background image in the middle of the screen
+        bg.position = CGPoint(x: size.width/2, y: size.height/2)
+        
+        //Force the Background image alway in back
+        bg.zPosition = -1
+        
+        //Finally add the background to the screen
+        addChild(bg)
+        
     }
     
     override func update(_ currentTime: TimeInterval) {
