@@ -18,6 +18,9 @@ class GameScene: SKScene {
 
     
     override func didMove(to view: SKView) {
+        
+        // BACKGROUND------------------------------------------------------------------------------------
+        
         // Set the background color of the app
         self.backgroundColor = SKColor.black;
         
@@ -33,6 +36,21 @@ class GameScene: SKScene {
         //Finally add the background to the screen
         addChild(bg)
         
+        //-------------------------------------------------------------------------------------------------
+        
+        
+        // ZOMBIE ADDING ON THE SCREEN --------------------------------------------------------------------
+        
+        //Adding zombie image
+        let zombie = SKSpriteNode(imageNamed: "zombie1")
+        
+        //Setting the position
+        zombie.position = CGPoint(x: 400, y: 400)
+        
+        //Finally Adding the image on screen
+        addChild(zombie)
+        
+        //-------------------------------------------------------------------------------------------------
     }
     
     override func update(_ currentTime: TimeInterval) {
