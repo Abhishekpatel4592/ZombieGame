@@ -14,7 +14,9 @@ class GameScene: SKScene {
     // Make zombie global, so other functions can access it
     let zombie = SKSpriteNode(imageNamed: "zombie1")
     
-    // Movement variables
+    // Movement variables for the zombie movement
+    var zombieMovingLeft : Bool = false
+    var zombieMovingRight : Bool = true
 
     
     override func didMove(to view: SKView) {
@@ -61,7 +63,46 @@ class GameScene: SKScene {
         // In IOS, the update() function == updatePositions() function from Android game template
         
         //Making Zombie move to the right
-        let zombieX = self.zombie.position.x + 10
+        //let zombieX = self.zombie.position.x + 10
+        
+        //Making the zombie movement bounce of the both the walls------------------------------------------
+        
+        //For the left hand wall use the condition in which the position is greater then zero
+        // For the right hand wall use the condition in which the position should not be greater then the screen width
+        
+        //Get the position for the right side of the screen
+        let screenRight = size.width
+        
+        //Get the position of the zombie
+        var zombieX = self.zombie.position.x
+        
+        if zombieMovingLeft == true {
+            
+            //Update the position of zombie while moving left
+            zombieX = self.zombie.position.x - 5
+            
+            //Bouncing back from the left hand side of the screen
+            if(zombieX <= 0){
+                zombieMovingLeft = false
+                zombieMovingRight = true
+            }
+            
+        }
+        
+        if zombieMovingRight == true {
+            
+            //Update the position of the zombie moving right
+            zombieX = self.zombie.position.x + 5
+            
+            //Bouncing back from the right hand side of the screen
+            if(zombieX >= screenRight){
+                zombieMovingLeft = true
+                zombieMovingRight = false
+            }
+            
+        }
+        
+        
         self.zombie.position = CGPoint(x: zombieX, y: self.zombie.position.y)
         
         
